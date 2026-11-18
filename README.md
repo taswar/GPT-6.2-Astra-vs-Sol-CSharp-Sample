@@ -1,12 +1,19 @@
 # GPT-6.2 Astra vs Sol for C# Developers
 
+![GPT-6.2-Astra-vs-Sol](gpt-6.2-Astra-vs-Sol.png)
+
 > A runnable .NET 10 console app that sends the same three tasks to **GPT-6.2 Astra** and **GPT-6.2 Sol** in **Microsoft Foundry** through `Microsoft.Extensions.AI`, then prints a side-by-side table of tokens, latency and estimated cost.
 
+[![build](https://github.com/taswar/GPT-6.2-Astra-vs-Sol-CSharp-Sample/actions/workflows/dotnet.yml/badge.svg)](https://github.com/taswar/GPT-6.2-Astra-vs-Sol-CSharp-Sample/actions/workflows/dotnet.yml)
 ![.NET 10](https://img.shields.io/badge/.NET-10-512BD4)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](CONTRIBUTING.md)
 
+- 📖 Full walkthrough: [GPT-6.2 Astra vs Sol for C# Developers](https://taswar.zeytinsoft.com/gpt-6-2-astra-vs-sol-csharp-developers-guide/?utm_source=github&utm_medium=readme&utm_campaign=GPT-6.2-Astra-vs-Sol-CSharp-Sample&utm_content=walkthrough)
 - ⭐ If this sample helps you, star the repo so other .NET developers can find it.
 - 🔁 Related: [GPT-6.1 Sol C# Demo](https://github.com/taswar/Gpt-6.1-Sol-CSharp-Demo) and [GPT-6 Astra C# Demo](https://github.com/taswar/GptSixAstraDemo)
-- For my free ebook on prompt engineering, see [Prompt Engineering for .NET Developers](https://github.com/taswar/PromptEngineeringForDotNetDevelopers)
+- For more C# samples using other AI models, see [AI models for C# developers](https://taswar.zeytinsoft.com/foundry-ai-models-csharp/?utm_source=github&utm_medium=readme&utm_campaign=GPT-6.2-Astra-vs-Sol-CSharp-Sample&utm_content=ai-models-hub)
+- For my free ebooks, see [One Family, Four Tiers: GPT-6 for C# Developers](https://taswar.zeytinsoft.com/books/one-family-four-tiers-gpt-6-csharp/?utm_source=github&utm_medium=readme&utm_campaign=GPT-6.2-Astra-vs-Sol-CSharp-Sample&utm_content=one-family-four-tiers-gpt-6-csharp) and [Prompt Engineering for .NET Developers](https://github.com/taswar/PromptEngineeringForDotNetDevelopers)
 
 It's one `Program.cs` with no wrapper library. Both models get the same prompts, the same tools and the same reasoning effort (`Medium`), so the differences you see come from the models and not from the settings.
 
@@ -40,9 +47,9 @@ The estimated cost is calculated from the `Price` records in `Program.cs` (USD p
 **1. Clone the repo and store your settings** (user secrets are kept outside the repo):
 
 ```bash
-git clone https://github.com/taswar/GPT-6-2-Astra-vs-Sol-CSharp-Sample.git
-cd GPT-6-2-Astra-vs-Sol-CSharp-Sample
-dotnet user-secrets set "AZURE_AI_ENDPOINT" "https://<your-resource>.cognitiveservices.azure.com/"
+git clone https://github.com/taswar/GPT-6.2-Astra-vs-Sol-CSharp-Sample.git
+cd GPT-6.2-Astra-vs-Sol-CSharp-Sample
+dotnet user-secrets set "AZURE_AI_ENDPOINT" "https://<your-resource>.services.ai.azure.com"
 dotnet user-secrets set "ASTRA_DEPLOYMENT" "gpt-6.2-astra"
 dotnet user-secrets set "SOL_DEPLOYMENT" "gpt-6.2-sol"
 ```
@@ -114,13 +121,15 @@ The OpenAI SDK marks the Responses types as experimental, which is why `Program.
 | `Microsoft.Extensions.AI.OpenAI` | 10.10.1 | `IChatClient` adapter for the OpenAI `ResponsesClient` |
 | `Azure.Identity` | 1.21.0 | `DefaultAzureCredential` for Entra ID sign-in |
 | `Microsoft.Extensions.Configuration.UserSecrets` | 10.0.12 | Local development secrets |
-| `Azure.AI.OpenAI` | 2.1.0 | No longer used by `Program.cs`. Safe to remove. |
 
 ## Project layout
 
 ```
 GPT-6-2-Astra-vs-Sol-CSharp-Sample.csproj   Target framework, NuGet references, UserSecretsId
 Program.cs                                  Client setup, the three tasks, the comparison table
+.github/workflows/dotnet.yml                Build workflow (restore and build on every push and pull request)
+CONTRIBUTING.md                             How to build, validate and submit a change
+LICENSE                                     MIT license
 ```
 
 ## Learn more
